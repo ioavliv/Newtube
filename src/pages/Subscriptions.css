@@ -1,0 +1,9 @@
+.sub-channels{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.videoPartial{
+    width:25%;
+}

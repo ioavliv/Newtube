@@ -1,0 +1,22 @@
+.channelDetail{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.channelInfo{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.channelInfo img{
+    width: 240px;
+    height: 240px;
+}
+
+.channelVideos{
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+}

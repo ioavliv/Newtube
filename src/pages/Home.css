@@ -1,0 +1,33 @@
+section{
+    min-height:100vh;
+}
+.home{
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 64px);
+    width:100%;
+    margin: 0%;
+    padding: 3em;
+}
+
+.logins{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.logins div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+}
+
+.channels{
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+}

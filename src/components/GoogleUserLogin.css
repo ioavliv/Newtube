@@ -1,0 +1,10 @@
+.googleLogin{
+    margin: 0 20px 0 20px;
+    padding: 30px;
+    border: 1px dotted grey;
+    background-color: #eee;
+}
+
+.googleLogin h6{
+    margin: 20px;
+}

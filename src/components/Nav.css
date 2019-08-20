@@ -1,0 +1,19 @@
+nav .container{
+display: flex;
+justify-content: space-between;
+align-items: center;
+height:100%;
+}
+
+nav .container div{
+    display: flex;
+    flex-direction: row;
+}
+    
+nav .container h5{
+    padding-right: 15px;
+}
+
+nav .container img{    
+    height: 50px;
+}

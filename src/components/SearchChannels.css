@@ -1,0 +1,27 @@
+.searchChannels{
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-field{
+    display: flex;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-field input{
+    margin: 0% !important;
+    color: white;
+}
+
+.searchChannels form{
+    width:100%;
+}
+
+.channels{
+    display: flex;
+    justify-content: space-between;
+}
