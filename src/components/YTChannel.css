@@ -3,3 +3,7 @@
     height: 50vh;
     text-align: center;
 }
+
+.channel-partial img{
+    border-radius: 50%;
+}

@@ -1,19 +1,32 @@
 nav .container{
-display: flex;
-justify-content: space-between;
-align-items: center;
-height:100%;
-}
-
-nav .container div{
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height:100%;
 }
     
 nav .container h5{
-    padding-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0%;
 }
 
 nav .container img{    
     height: 50px;
+    border-radius: 50%;
+}
+
+nav .user-img {
+    display: flex;
+    justify-content: center;
+    align-content: flex-end;
+}
+
+nav .w3-black{
+    border: none;
+}
+
+nav .w3-dropdown-content {
+    background-color: rgb(255, 255, 255, 0) !important;
 }

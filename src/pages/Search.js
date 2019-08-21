@@ -35,8 +35,12 @@ export default class Search extends Component {
                     {this.state.channel.items ?
                         <div className="channels">
                             {this.state.channel.items.map((channel, index) => {
+                                debugger
                                 return (
+                                    <>
                                     <YTChannel channelId={channel.id} channel={channel} key={index} />
+                                    {/* Show subscribe button if this channel is not already subscribed <p>Subscribe</p> */}
+                                    </>
                                 )
                             })
                             }

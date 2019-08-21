@@ -23,5 +23,7 @@
 
 .title-description p{
     padding: 0 20px 0 20px;
+    height: 100%;
+    overflow-y: auto;
     text-align: left;
 }

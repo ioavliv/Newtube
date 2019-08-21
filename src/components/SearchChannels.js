@@ -26,10 +26,10 @@ export default class SearchChannels extends Component {
             <div className="searchChannels">
                 <form onSubmit={this.handleSubmit}>
                     <div className="input-field">
-                        <input type="text" placeholder="Enter Channel Name" name="channelInput"
+                        <input className="searchInput" type="text" placeholder="Find a Channel" name="channelInput"
                             value={this.state.name} onChange={this.handleFormChange}
                         />
-                        <input type="submit" value="Find Channel" className="btn grey" />
+                        <input type="submit" value="SEARCH" className="btn grey" />
                     </div>
                 </form>
             </div>

@@ -8,15 +8,29 @@
     width: 20vw;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+.channelDescription{
+    height: 170px;
+    margin: 0;
+    overflow-y: auto;
+    text-align: left;
 }
 
 .channelInfo img{
     width: 240px;
     height: 240px;
+    border-radius: 50%;
 }
 
 .channelVideos{
     width: 80vw;
     display: flex;
     flex-direction: column;
+}
+
+.moreVidsBtn{
+    border: none !important;
 }

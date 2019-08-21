@@ -1,21 +1,24 @@
-.newtubeLogin{
-    margin: 0 20px 0 20px;
+.signUp{
     padding: 30px;
-    border: 1px dotted grey;
+    border: 5px double grey;
     background-color: #eee;
+    width:40% !important;
 }
 
-.newtubeLogin form{
+.signUp form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.newtubeLogin form .input-field{
+.signUp form .input-field{
     width:100%;
 }
+.signUp form .input-field div{
+    margin: 15px 0 0 0;
+}
 
-.newtubeLogin form .input-field .grey{
+.signUp form .input-field .grey{
     margin-top: 15px !important;
 }

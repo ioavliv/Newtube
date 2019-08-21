@@ -17,9 +17,9 @@ export default class App extends Component {
         <Route path="/channel/:id" component={ChannelDetail} />
         <Route path="/search/:query" component={Search} />
         <ProtectedRoute 
-        redirectUrl='/' 
-        path="/subscriptions" 
-        component={Subscriptions}
+          redirectUrl='/' 
+          path="/subscriptions" 
+          component={Subscriptions}
         />
       </div>
     );

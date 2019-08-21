@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getChannelById, getAllVideos } from '../utils/api';
+import { getChannelById, getAllVideos, getPreviousPage, getNextPage } from '../utils/api';
 import MainLayout from '../layout/MainLayout';
 import VideoDetail from '../components/VideoDetail';
 import './ChannelDetail.css';
@@ -29,6 +29,20 @@ export default class ChannelDetail extends Component {
         })
     }
 
+    previousPage = async (playlistId, pageToken) => {
+        let videos = await getPreviousPage(playlistId, pageToken)
+        this.setState({
+            videos: videos
+        })
+    }
+
+    nextPage = async (playlistId, pageToken) => {
+        let videos = await getNextPage(playlistId, pageToken)
+        this.setState({
+            videos: videos
+        })
+    }
+
     render() {
         return (
             <MainLayout>
@@ -51,18 +65,21 @@ export default class ChannelDetail extends Component {
                                     </li>
                                 </ul>
                             </div>
-                            <p>{this.state.channel.snippet.description.substring(0, 350)}</p> 
-                            {/* +"..." */}
+                            <div>
+                                <p className="channelDescription">{this.state.channel.snippet.description}</p>
+                            </div>
                         </div>
                         : <>Loading</>}
 
                     {this.state.videos.items ?
                         <div className="channelVideos">
-                            {this.state.videos.items.map((video, index) => {
-                                return (
-                                    <VideoDetail video={video} key={index} />
-                                )
-                            })}
+                            <button className="moreVidsBtn" onClick={()=>{{this.previousPage(this.state.channel.contentDetails.relatedPlaylists.uploads, this.state.videos.prevPageToken)}}}>▲</button> 
+                                {this.state.videos.items.map((video, index) => {
+                                    return (
+                                        <VideoDetail video={video} key={index} />
+                                    )
+                                })}
+                            <button className="moreVidsBtn" onClick={()=>{this.nextPage(this.state.channel.contentDetails.relatedPlaylists.uploads, this.state.videos.nextPageToken)}}>▼</button> 
                         </div>
                         : <div className="channelVideos">Loading</div>}
 

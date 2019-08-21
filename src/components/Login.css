@@ -1,0 +1,24 @@
+.logIn{
+    padding: 30px;
+    border: 5px double grey;
+    background-color: #eee;
+    width:40% !important;
+}
+
+.logIn form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logIn form .input-field{
+    width:100%;
+}
+.logIn form .input-field div{
+    margin: 15px 0 0 0;
+}
+
+.logIn form .input-field .grey{
+    margin-top: 15px !important;
+}

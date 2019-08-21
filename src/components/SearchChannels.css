@@ -12,8 +12,9 @@
     align-items: center;
 }
 
-.input-field input{
+.searchInput{
     margin: 0% !important;
+    padding: 0 10px 0 10px !important;
     color: white;
 }
 

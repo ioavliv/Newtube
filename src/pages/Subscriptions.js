@@ -28,9 +28,9 @@ export default class Subscriptions extends Component {
                         <div className="sub-channels">
                             {this.state.channel.items.map((channel, index) => {
                                 return (
-                                    <div className="videoPartial">
+                                    <div key={index} className="videoPartial">
                                         <YTChannel channelId={channel.snippet.resourceId.channelId}
-                                            channel={channel} key={index}
+                                            channel={channel}
                                         />
                                     </div>
 
