@@ -1,14 +1,13 @@
 import Axios from 'axios'
 import { logout } from "../utils/auth"
-const KEY = process.env.API_KEY;
+const KEY = process.env.REACT_APP_API_KEY;
 const axios = Axios.create({
     baseURL: "https://www.googleapis.com/youtube/v3/"
 })
 export default axios;
 
-export const getSubscriptions = async function () {
-    try {
-        const subscriptions = await axios({
+export const getSubscriptions = function () {
+        return axios({
             url: "/subscriptions",
             headers: {
                 'Authorization': `Bearer ${localStorage.userToken}`,
@@ -18,24 +17,28 @@ export const getSubscriptions = async function () {
                 part: 'contentDetails,snippet',
                 mine: true,
                 key: KEY,
+                order: "unread"
             },
             method: "GET"
         })
-        return subscriptions.data
-    } catch (err) {
-        if (err.response.status === 401) {
-            logout();
-            //
-        }
-        if (err.response.status === 400) {
-            console.log("Error 400");
-        }
-    }
+        .then(responseFromApi => {
+    
+            return responseFromApi.data;
+        })
+        .catch((err) => {
+            console.log('err' + err)
+            if (err.response.status === 401) {
+                logout();
+                //
+            }
+            if (err.response.status === 400) {
+                console.log("Error 400");
+            }
+        });
 }
 
-export const getChannelByName = async function (channelSearch) {
-    try {
-        const response = await axios({
+export const getChannelByName = function (channelSearch) {
+        return axios({
             url: "/channels",
             params: {
                 part: 'snippet',
@@ -44,21 +47,24 @@ export const getChannelByName = async function (channelSearch) {
             },
             method: "GET"
         })
-        return response.data
-    } catch (err) {
-        if (err.response.status === 401) {
-            logout();
-            //
-        }
-        if (err.response.status === 400) {
-            console.log("Error 400");
-        }
-    }
+        .then(responseFromApi => {
+    
+            return responseFromApi.data;
+        })
+        .catch((err) => {
+            console.log('err' + err)
+            if (err.response.status === 401) {
+                logout();
+                //
+            }
+            if (err.response.status === 400) {
+                console.log("Error 400");
+            }
+        });
 }
 
-export const getChannelById = async function (channel_id) {
-    try {
-        const channel = await axios({
+export const getChannelById = function (channel_id) {
+        return axios({
             url: "/channels",
             headers: {
                 'Authorization': `Bearer ${localStorage.userToken}`,
@@ -70,21 +76,24 @@ export const getChannelById = async function (channel_id) {
             },
             method: "GET"
         })
-        return channel.data.items[0]
-    } catch (err) {
-        if (err.response.status === 401) {
-            logout();
-            //
-        }
-        if (err.response.status === 400) {
-            console.log("Error 400");
-        }
-    }
+        .then(responseFromApi => {
+    
+            return responseFromApi.data;
+        })
+        .catch((err) => {
+            console.log('err' + err)
+            if (err.response.status === 401) {
+                logout();
+                //
+            }
+            if (err.response.status === 400) {
+                console.log("Error 400");
+            }
+        });
 }
 
-export const getAllVideos = async function (playlistId) {
-    try {
-        const videos = await axios({
+export const getAllVideos = function (playlistId) {
+        return axios({
             url: "/playlistItems",
             headers: {
                 'Authorization': `Bearer ${localStorage.userToken}`,
@@ -97,21 +106,24 @@ export const getAllVideos = async function (playlistId) {
             },
             method: "GET"
         })
-        return videos.data
-    } catch (err) {
-        if (err.response.status === 401) {
-            logout();
-            //
-        }
-        if (err.response.status === 400) {
-            console.log("Error 400");
-        }
-    }
+        .then(responseFromApi => {
+    
+            return responseFromApi.data;
+        })
+        .catch((err) => {
+            console.log('err' + err)
+            if (err.response.status === 401) {
+                logout();
+                //
+            }
+            if (err.response.status === 400) {
+                console.log("Error 400");
+            }
+        });
 }
 
-export const getPreviousPage = async function (playlistId, pageToken) {
-    try {
-        const videos = await axios({
+export const getPreviousPage = function (playlistId, pageToken) {
+        return axios({
             url: "/playlistItems",
             headers: {
                 'Authorization': `Bearer ${localStorage.userToken}`,
@@ -125,21 +137,24 @@ export const getPreviousPage = async function (playlistId, pageToken) {
             },
             method: "GET"
         })
-        return videos.data
-    } catch (err) {
-        if (err.response.status === 401) {
-            logout();
-            //
-        }
-        if (err.response.status === 400) {
-            console.log("Error 400");
-        }
-    }
+        .then(responseFromApi => {
+    
+            return responseFromApi.data;
+        })
+        .catch((err) => {
+            console.log('err' + err)
+            if (err.response.status === 401) {
+                logout();
+                //
+            }
+            if (err.response.status === 400) {
+                console.log("Error 400");
+            }
+        });
 }
 
-export const getNextPage = async function (playlistId, pageToken) {
-    try {
-        const videos = await axios({
+export const getNextPage = function (playlistId, pageToken) {
+        return axios({
             url: "/playlistItems",
             headers: {
                 'Authorization': `Bearer ${localStorage.userToken}`,
@@ -153,14 +168,83 @@ export const getNextPage = async function (playlistId, pageToken) {
             },
             method: "GET"
         })
-        return videos.data
-    } catch (err) {
-        if (err.response.status === 401) {
-            logout();
-            //
-        }
-        if (err.response.status === 400) {
-            console.log("Error 400");
-        }
-    }
+        .then(responseFromApi => {
+    
+            return responseFromApi.data;
+        })
+        .catch((err) => {
+            console.log('err' + err)
+            if (err.response.status === 401) {
+                logout();
+                //
+            }
+            if (err.response.status === 400) {
+                console.log("Error 400");
+            }
+        });
+}
+
+export const addSubscription = function (channelId) {
+        return axios({
+            url: "/subscriptions",
+            headers: {
+                'Authorization': `Bearer ${localStorage.userToken}`,
+            },
+            params: {
+                part: 'snippet',
+                key: KEY,
+                mine: true,
+                data: {
+                    "snippet": {
+                      "resourceId": {
+                        "kind": "youtube#channel",
+                        "channelId": channelId
+                      }
+                    }
+                  }
+            },
+            method: "GET"
+        })
+        .then(responseFromApi => {
+    
+            return responseFromApi.data;
+        })
+        .catch((err) => {
+            console.log('err' + err)
+            if (err.response.status === 401) {
+                logout();
+                //
+            }
+            if (err.response.status === 400) {
+                console.log("Error 400");
+            }
+        });
+}
+
+export const removeSubscription = function (channelId) {
+        return axios({
+            url: "/subscriptions",
+            headers: {
+                'Authorization': `Bearer ${localStorage.userToken}`,
+            },
+            params: {
+                id: channelId,
+                key: KEY,
+            },
+            method: "DELETE"
+        })
+        .then(responseFromApi => {
+    
+            return responseFromApi.data;
+        })
+        .catch((err) => {
+            console.log('err' + err)
+            if (err.response.status === 401) {
+                logout();
+                //
+            }
+            if (err.response.status === 400) {
+                console.log("Error 400");
+            }
+        });
 }

@@ -5,7 +5,8 @@ nav .container{
     height:100%;
 }
     
-nav .container h5{
+nav .container h4{
+    font-family: 'Pathway Gothic One', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
-import { setUser, logout as authLogout } from '../utils/auth';
+import { setGoogleUser, logout as authLogout } from '../utils/auth';
 import './GoogleUserLogin.css';
 
 export default class GoogleUserLogin extends Component {
@@ -13,14 +13,14 @@ export default class GoogleUserLogin extends Component {
     }
 
     responseGoogle = async (response) => {
-        setUser(response)
+        await setGoogleUser(response)
         this.setState({ user: true }, () => {
             this.props.history.push("/subscriptions")
         })
     }
 
-    logout = (response) => {
-        authLogout()
+    logout = async (response) => {
+        await authLogout()
         this.setState({ user: false }, () => {
             this.props.history.push("/")
         })
@@ -31,7 +31,7 @@ export default class GoogleUserLogin extends Component {
             <div className="googleLogin">
                 <h6>Log In With Google</h6>
                 <GoogleLogin
-                    scope="https://www.googleapis.com/auth/youtube.readonly"
+                    scope={process.env.REACT_APP_SCOPE}
                     clientId="533634014318-9106qq5hef7elbmh4pc4l746t8kmoglf.apps.googleusercontent.com"
                     buttonText="Login"
                     onSuccess={this.responseGoogle}

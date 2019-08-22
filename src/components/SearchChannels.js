@@ -23,13 +23,15 @@ export default class SearchChannels extends Component {
 
     render() {
         return (
-            <div className="searchChannels">
+
+            <div className="nav-wrapper searchChannels">
                 <form onSubmit={this.handleSubmit}>
                     <div className="input-field">
-                        <input className="searchInput" type="text" placeholder="Find a Channel" name="channelInput"
-                            value={this.state.name} onChange={this.handleFormChange}
+                        <input id="search" type="search" className="searchInput" placeholder="Find a Channel" name="channelInput"required 
+                               value={this.state.channelInput} onChange={this.handleFormChange}
                         />
-                        <input type="submit" value="SEARCH" className="btn grey" />
+                        <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
+                        <i className="material-icons">close</i>
                     </div>
                 </form>
             </div>

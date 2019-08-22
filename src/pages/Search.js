@@ -12,19 +12,23 @@ export default class Search extends Component {
         }
     }
 
-    componentDidUpdate = async (prevProps) => {
+    componentDidUpdate = (prevProps) => {
         if (this.props.match.params.query !== prevProps.match.params.query) {
-            let channel = await getChannelByName(this.props.match.params.query)
-            this.setState({
-                channel: channel
-            })
+            getChannelByName(this.props.match.params.query)
+            .then((channel)=>{
+                this.setState({
+                    channel: channel
+                })
+            })   
         }
     }
 
-    componentDidMount = async () => {
-        let channel = await getChannelByName(this.props.match.params.query)
-        this.setState({
-            channel: channel
+    componentDidMount = () => {
+        getChannelByName(this.props.match.params.query)
+        .then((channel)=>{
+            this.setState({
+                channel: channel
+            })
         })
     }
 
@@ -35,17 +39,13 @@ export default class Search extends Component {
                     {this.state.channel.items ?
                         <div className="channels">
                             {this.state.channel.items.map((channel, index) => {
-                                debugger
                                 return (
-                                    <>
-                                    <YTChannel channelId={channel.id} channel={channel} key={index} />
-                                    {/* Show subscribe button if this channel is not already subscribed <p>Subscribe</p> */}
-                                    </>
+                                    <YTChannel {...this.props} channelId={channel.id} channel={channel} key={index} />
                                 )
                             })
                             }
                         </div>
-                        : <>Loading</>}
+                        : <></>}
                 </div>
             </MainLayout>
         )

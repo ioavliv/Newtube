@@ -23,19 +23,19 @@ class Nav extends Component {
         })
     }
 
-    handleSubmit = async (e) => {
+    handleSubmit = (e) => {
         e.preventDefault();
         const channelInput = this.state.channelInput;
-        let channel = await getChannelByName(channelInput)
+        let channel = getChannelByName(channelInput)
         this.setState({
             channel: channel
         })
     }
 
-    componentDidMount = async () => {
+    componentDidMount = () => {
         let channelInput = this.props.match.params.query
         if (channelInput !== undefined) {
-            let channel = await getChannelByName(channelInput)
+            let channel = getChannelByName(channelInput)
             this.setState({
                 channel: channel
             })
@@ -56,9 +56,12 @@ class Nav extends Component {
                     <div className="container">
                         {getUser() ?
                             <>
-                                <h5><Link to={"/subscriptions"}>
-                                    <img src="http://www.canam.dance/wp-content/uploads/2018/06/8E5F4202-CB50-4F8C-BB96-D4CBADA6E916.gif" alt="New"/>
-                                    NewTube</Link></h5>
+                                <h4>
+                                    <Link to={"/subscriptions"}>
+                                    <img src="../images/logo.gif" alt="New"/>
+                                    NewTube
+                                    </Link>
+                                </h4>
                                 <SearchChannels {...this.props} />
                                 <div className="w3-dropdown-hover">
                                     <button className="w3-black"><img src={localStorage.userImg} alt="Profile Pic" /></button>
@@ -72,9 +75,13 @@ class Nav extends Component {
                                     </div>
                                 </div>
                             </>
-                            : <h5><Link to={"/"}>
-                                <img src="http://www.canam.dance/wp-content/uploads/2018/06/8E5F4202-CB50-4F8C-BB96-D4CBADA6E916.gif" alt="New"/>
-                                NewTube</Link></h5>}
+                            : 
+                            <h4>
+                                <Link to={"/"}>
+                                <img src="../images/logo.gif" alt="New"/>
+                                NewTube
+                                </Link>
+                            </h4>}
                     </div>
                 </div>
             </nav>

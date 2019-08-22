@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import './Login.css';
-
+import { login } from '../utils/auth';
 
 export default class Login extends Component {
+    
     constructor() {
         super();
         this.state = {
@@ -23,41 +24,22 @@ export default class Login extends Component {
     }
 
     handleFormSubmit(event) {
-        event.preventDefault();
-        // if (this.password !== this.password_repeat) {
-        //     alert("Passwords don't match");
-        // } else {
-        //     auth.signup(this.state.user)
-        //         .then(() => {
-        //             this.setState({ error: "" });
-        //             this.props.history.push("/login");
-        //         })
-        //         .catch((err) => {
-        //             this.setState({ error: err.message });
-        //         });
-        // }
-
-    };
-
-    //   handleFormChange(event) {
-    //     let user = this.state.user
-    //     user[event.target.name]= event.target.value
-    //     this.setState({
-    //       user: user
-    //     });
-    //   }
-
-    // handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     //create new account in DB
-    //     console.log("Account created!")
-    // }
+        event.preventDefault()
+        login(this.state.loginUsername, this.state.loginPassword)
+        .then(() => {
+          this.setState({ error: "" });
+          this.props.history.push('/subscriptions')
+        })
+        .catch((err) => {
+          this.setState({ error: err.message });
+        });
+      }
 
     render() {
         return (
             <div className="logIn">
                 <h6>Log in</h6>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleFormSubmit}>
                     <div className="input-field col s12">
                         <input id="loginUsername" type="text" name="loginUsername"
                             value={this.state.username} onChange={this.handleFormChange}
@@ -72,7 +54,7 @@ export default class Login extends Component {
                         <label htmlFor="loginPassword">Password</label>
                     </div>
 
-                    <input type="submit" value="Log in" className="btn grey" />
+                    <input type="submit" value="Log in" className="btn red" />
                 </form>
             </div >
         )

@@ -12,10 +12,16 @@ export default class Subscriptions extends Component {
         }
     }
 
-    componentDidMount = async () => {
-        let subscriptions = await getSubscriptions()
-        this.setState({
-            channel: subscriptions
+    componentDidMount = () => {
+        getSubscriptions()
+        .then((subscriptions) => {
+            debugger
+            this.setState({
+                channel: subscriptions
+            })
+        })
+        .catch((err) => {
+            console.log(err);
         })
     }
 
@@ -29,11 +35,10 @@ export default class Subscriptions extends Component {
                             {this.state.channel.items.map((channel, index) => {
                                 return (
                                     <div key={index} className="videoPartial">
-                                        <YTChannel channelId={channel.snippet.resourceId.channelId}
+                                        <YTChannel {...this.props} channelId={channel.snippet.resourceId.channelId}
                                             channel={channel}
                                         />
                                     </div>
-
                                 )
                             })}
                         </div>

@@ -1,7 +1,7 @@
 .eachVid{
     display: flex;
     width: 100%;
-    height: calc(25vh - 16px);
+    height: 145px;
     padding:1%;
 }
 
@@ -23,6 +23,8 @@
 
 .title-description p{
     padding: 0 20px 0 20px;
+    margin-bottom: 5px;
+    margin-top: 10px;
     height: 100%;
     overflow-y: auto;
     text-align: left;

@@ -10,7 +10,8 @@ export default class SignUp extends Component {
                 username: "",
                 password: "",
                 confirm: ""
-            }
+            },
+            error: null
         }
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleFormChange = this.handleFormChange.bind(this);
@@ -24,16 +25,16 @@ export default class SignUp extends Component {
         });
     }
 
-    handleFormSubmit = async (e) => {
+    handleFormSubmit = (e) => {
         e.preventDefault();
         if (this.state.password !== this.state.confirm) {
             alert("Passwords don't match");
+            this.setState({error: "Passwords don't match"})
         } else {
-            debugger
-            let response = await signup(this.state.user)
-            debugger
-            console.log("Account created!")
-            this.props.history.push("/");
+            signup(this.state.user)
+            .catch((err)=>{
+                this.setState({error: err})
+            })
         }
     }
 
@@ -62,7 +63,7 @@ export default class SignUp extends Component {
                             />
                             <label htmlFor="confirm">Confirm Password</label>
                         </div>
-                        <input type="submit" value="Create Account" className="btn grey" />
+                        <input type="submit" value="Create Account" className="btn red" />
                     </div>
                 </form>
             </div>

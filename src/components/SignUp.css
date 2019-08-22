@@ -22,3 +22,7 @@
 .signUp form .input-field .grey{
     margin-top: 15px !important;
 }
+
+.signUp form #confirm{
+    margin-bottom: 22px;
+}

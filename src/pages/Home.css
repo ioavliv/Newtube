@@ -17,6 +17,7 @@
 }
 
 .welcome .app-description h5{
+    font-family: 'Sawarabi Gothic', sans-serif;
     display: flex;
     flex-wrap: wrap;
     width: 250px;
@@ -37,6 +38,7 @@
 }
 
 .welcome .benefits li{
+    font-family: 'Sawarabi Gothic', sans-serif;
     color: white;
     padding: 10px;
     font-size: 18px;
@@ -57,7 +59,7 @@
     padding: 20px;
     height: 100vh;
     width:100vw;
-    background-color: #6B1913;
+    background-color: #8f0a00;
 }
 .or{
     background-color: black;

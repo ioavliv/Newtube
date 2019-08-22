@@ -13,34 +13,44 @@ export default class ChannelDetail extends Component {
         }
     }
 
-    componentDidMount = async () => {
+    componentDidMount = () => {
         const channel_id = this.props.match.params.id
-        let channel = await getChannelById(channel_id)
-        this.setState({
-            channel: channel
+        getChannelById(channel_id)
+        .then((channel)=>{
+            this.setState({
+                channel: channel
+            })
         })
-        this.findVideos(this.state.channel.contentDetails.relatedPlaylists.uploads);
-    }
-
-    findVideos = async (playlistId) => {
-        let videos = await getAllVideos(playlistId)
-        this.setState({
-            videos: videos
+        .then(()=>{
+            this.findVideos(this.state.channel.contentDetails.relatedPlaylists.uploads);
         })
     }
 
-    previousPage = async (playlistId, pageToken) => {
-        let videos = await getPreviousPage(playlistId, pageToken)
-        this.setState({
-            videos: videos
+    findVideos = (playlistId) => {
+        getAllVideos(playlistId)
+        .then((videos)=>{
+            this.setState({
+                videos: videos
+            })
         })
     }
 
-    nextPage = async (playlistId, pageToken) => {
-        let videos = await getNextPage(playlistId, pageToken)
-        this.setState({
-            videos: videos
+    previousPage = (playlistId, pageToken) => {
+        getPreviousPage(playlistId, pageToken)
+        .then((videos)=>{
+            this.setState({
+                videos: videos
+            })
         })
+    }
+
+    nextPage = (playlistId, pageToken) => {
+        getNextPage(playlistId, pageToken)
+        .then((videos)=>{
+            this.setState({
+                videos: videos
+            })
+        })   
     }
 
     render() {
@@ -73,7 +83,7 @@ export default class ChannelDetail extends Component {
 
                     {this.state.videos.items ?
                         <div className="channelVideos">
-                            <button className="moreVidsBtn" onClick={()=>{{this.previousPage(this.state.channel.contentDetails.relatedPlaylists.uploads, this.state.videos.prevPageToken)}}}>▲</button> 
+                            <button className="moreVidsBtn" onClick={()=>{this.previousPage(this.state.channel.contentDetails.relatedPlaylists.uploads, this.state.videos.prevPageToken)}}>▲</button> 
                                 {this.state.videos.items.map((video, index) => {
                                     return (
                                         <VideoDetail video={video} key={index} />
