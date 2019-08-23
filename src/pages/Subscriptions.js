@@ -47,15 +47,13 @@ export default class Subscriptions extends Component {
     }
 
     unsubscribe = (channelId) => {
-        debugger
         removeSubscription(channelId)
-        .then(()=>{
-            debugger
-            this.setState({
-                isSubscribed: false
+            .then(() => {
+                this.setState({
+                    isSubscribed: false
+                })
             })
-        })
-        
+
     }
 
     render() {
@@ -83,8 +81,11 @@ export default class Subscriptions extends Component {
                             })}
                         </div>
                     </>
-                    : <>Loading</>}
-
+                    :
+                    <div className="sub-channels">
+                        <iframe src="https://giphy.com/embed/sSgvbe1m3n93G" width="240" height="240" frameBorder="0" class="giphy-embed" allowFullScreen />
+                    </div>
+                }
             </MainLayout>
         )
     }

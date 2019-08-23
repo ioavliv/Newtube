@@ -34,7 +34,6 @@ export default class Search extends Component {
     }
 
     render() {
-        debugger
         return (
             <MainLayout>
                 <div className="ChannelResults">

@@ -3,6 +3,8 @@
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 20px;
+    min-height: calc(100vh - 64px);
+    align-items: center;
 }
 
 .videoPartial{

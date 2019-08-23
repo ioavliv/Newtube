@@ -17,7 +17,7 @@ export const getSubscriptions = function () {
                 part: 'contentDetails,snippet',
                 mine: true,
                 key: KEY,
-                order: "unread"
+                order: "alphabetical"
             },
             method: "GET"
         })
@@ -77,7 +77,6 @@ export const getChannelById = function (channel_id) {
             method: "GET"
         })
         .then(responseFromApi => {
-            debugger
             return responseFromApi.data.items[0];
         })
         .catch((err) => {
@@ -93,7 +92,6 @@ export const getChannelById = function (channel_id) {
 }
 
 export const getAllVideos = function (playlistId) {
-    debugger
         return axios({
             url: "/playlistItems",
             headers: {

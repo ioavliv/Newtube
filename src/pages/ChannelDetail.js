@@ -16,39 +16,39 @@ export default class ChannelDetail extends Component {
     componentDidMount = () => {
         const channel_id = this.props.match.params.id
         getChannelById(channel_id)
-        .then((channel)=>{
-            this.setState({
-                channel: channel
+            .then((channel) => {
+                this.setState({
+                    channel: channel
+                })
+                this.findVideos(this.state.channel.contentDetails.relatedPlaylists.uploads);
             })
-            this.findVideos(this.state.channel.contentDetails.relatedPlaylists.uploads);
-        })
     }
 
     findVideos = (playlistId) => {
         getAllVideos(playlistId)
-        .then((videos)=>{
-            this.setState({
-                videos: videos
+            .then((videos) => {
+                this.setState({
+                    videos: videos
+                })
             })
-        })
     }
 
     previousPage = (playlistId, pageToken) => {
         getPreviousPage(playlistId, pageToken)
-        .then((videos)=>{
-            this.setState({
-                videos: videos
+            .then((videos) => {
+                this.setState({
+                    videos: videos
+                })
             })
-        })
     }
 
     nextPage = (playlistId, pageToken) => {
         getNextPage(playlistId, pageToken)
-        .then((videos)=>{
-            this.setState({
-                videos: videos
+            .then((videos) => {
+                this.setState({
+                    videos: videos
+                })
             })
-        })   
     }
 
     render() {
@@ -77,19 +77,26 @@ export default class ChannelDetail extends Component {
                                 <p className="channelDescription">{this.state.channel.snippet.description}</p>
                             </div>
                         </div>
-                        : <>Loading</>}
+                        :
+                        <div className="channelInfo">
+                            <iframe src="https://giphy.com/embed/sSgvbe1m3n93G" width="240" height="240" frameBorder="0" />
+                        </div>
+                    }
 
                     {this.state.videos.items ?
                         <div className="channelVideos">
-                            <button className="moreVidsBtn" onClick={()=>{this.previousPage(this.state.channel.contentDetails.relatedPlaylists.uploads, this.state.videos.prevPageToken)}}>▲</button> 
-                                {this.state.videos.items.map((video, index) => {
-                                    return (
-                                        <VideoPartail video={video} key={index} />
-                                    )
-                                })}
-                            <button className="moreVidsBtn" onClick={()=>{this.nextPage(this.state.channel.contentDetails.relatedPlaylists.uploads, this.state.videos.nextPageToken)}}>▼</button> 
+                            <button className="moreVidsBtn" onClick={() => { this.previousPage(this.state.channel.contentDetails.relatedPlaylists.uploads, this.state.videos.prevPageToken) }}>▲</button>
+                            {this.state.videos.items.map((video, index) => {
+                                return (
+                                    <VideoPartail video={video} key={index} />
+                                )
+                            })}
+                            <button className="moreVidsBtn" onClick={() => { this.nextPage(this.state.channel.contentDetails.relatedPlaylists.uploads, this.state.videos.nextPageToken) }}>▼</button>
                         </div>
-                        : <div className="channelVideos">Loading</div>}
+                        : 
+                        <div className="channelVideos">
+                            <iframe src="https://giphy.com/embed/sSgvbe1m3n93G" width="240" height="240" frameBorder="0" />
+                        </div>}
 
                 </div>
             </MainLayout>

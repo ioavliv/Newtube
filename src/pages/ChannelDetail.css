@@ -30,7 +30,12 @@
     height: calc(100vh - 64px);
     display: flex;
     flex-direction: column;
-    justify-content: space-between
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.channelVideos button{
+    width: 100%;
 }
 
 .moreVidsBtn{
