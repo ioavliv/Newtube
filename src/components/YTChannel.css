@@ -8,6 +8,10 @@
     flex-direction: column;
 }
 
+.channel-partial a{
+    color: black;
+}
+
 .channel-partial img{
     border-radius: 50%;
 }

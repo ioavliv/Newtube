@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getChannelById, getAllVideos, getPreviousPage, getNextPage } from '../utils/api';
 import MainLayout from '../layout/MainLayout';
-import VideoDetail from '../components/VideoDetail';
+import VideoPartail from '../components/VideoPartial';
 import './ChannelDetail.css';
 
 export default class ChannelDetail extends Component {
@@ -20,8 +20,6 @@ export default class ChannelDetail extends Component {
             this.setState({
                 channel: channel
             })
-        })
-        .then(()=>{
             this.findVideos(this.state.channel.contentDetails.relatedPlaylists.uploads);
         })
     }
@@ -86,7 +84,7 @@ export default class ChannelDetail extends Component {
                             <button className="moreVidsBtn" onClick={()=>{this.previousPage(this.state.channel.contentDetails.relatedPlaylists.uploads, this.state.videos.prevPageToken)}}>▲</button> 
                                 {this.state.videos.items.map((video, index) => {
                                     return (
-                                        <VideoDetail video={video} key={index} />
+                                        <VideoPartail video={video} key={index} />
                                     )
                                 })}
                             <button className="moreVidsBtn" onClick={()=>{this.nextPage(this.state.channel.contentDetails.relatedPlaylists.uploads, this.state.videos.nextPageToken)}}>▼</button> 

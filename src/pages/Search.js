@@ -8,28 +8,29 @@ export default class Search extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            channel: ''
+            channel: '',
+            isSubscribed: false
         }
     }
 
     componentDidUpdate = (prevProps) => {
         if (this.props.match.params.query !== prevProps.match.params.query) {
             getChannelByName(this.props.match.params.query)
-            .then((channel)=>{
-                this.setState({
-                    channel: channel
+                .then((channel) => {
+                    this.setState({
+                        channel: channel
+                    })
                 })
-            })   
         }
     }
 
     componentDidMount = () => {
         getChannelByName(this.props.match.params.query)
-        .then((channel)=>{
-            this.setState({
-                channel: channel
+            .then((channel) => {
+                this.setState({
+                    channel: channel
+                })
             })
-        })
     }
 
     render() {
@@ -37,10 +38,19 @@ export default class Search extends Component {
             <MainLayout>
                 <div className="ChannelResults">
                     {this.state.channel.items ?
-                        <div className="channels">
+                        <div className="channel">
                             {this.state.channel.items.map((channel, index) => {
                                 return (
-                                    <YTChannel {...this.props} channelId={channel.id} channel={channel} key={index} />
+                                    <div className="searched-channel">
+                                        <YTChannel {...this.props} channelId={channel.id} channel={channel} key={index} />
+                                        {this.state.isSubscribed === true ?
+                                            <button className="btn grey" onClick={() => { this.unsubscribe(this.props.channel.id) }}>SUBSCRIBED</button>
+                                            :
+                                            (this.state.isSubscribed === false ?
+                                                <button className="btn red" onClick={() => { this.subscribe(this.props.channelId) }}>SUBSCRIBE</button>
+                                                : <></>)
+                                        }
+                                    </div>
                                 )
                             })
                             }

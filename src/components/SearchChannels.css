@@ -21,9 +21,3 @@
 .searchChannels form{
     width:100%;
 }
-
-.channels{
-    height: calc(100vh - 64px);
-    display: flex;
-    justify-content: space-between;
-}

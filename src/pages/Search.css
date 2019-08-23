@@ -1,0 +1,16 @@
+.channel{
+    height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.channel button{
+    width: 50%;
+}
+
+.searched-channel{
+    padding-top: 15vh;
+}

@@ -32,7 +32,7 @@ export default class GoogleUserLogin extends Component {
                 <h6>Log In With Google</h6>
                 <GoogleLogin
                     scope={process.env.REACT_APP_SCOPE}
-                    clientId="533634014318-9106qq5hef7elbmh4pc4l746t8kmoglf.apps.googleusercontent.com"
+                    clientId={process.env.REACT_APP_CLIENT_ID}
                     buttonText="Login"
                     onSuccess={this.responseGoogle}
                     onFailure={this.responseGoogle} //Needs a separate function

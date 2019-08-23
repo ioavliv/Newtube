@@ -58,7 +58,7 @@ class Nav extends Component {
                             <>
                                 <h4>
                                     <Link to={"/subscriptions"}>
-                                    <img src="../images/logo.gif" alt="New"/>
+                                    <img src="http://www.canam.dance/wp-content/uploads/2018/06/8E5F4202-CB50-4F8C-BB96-D4CBADA6E916.gif" alt="New"/>
                                     NewTube
                                     </Link>
                                 </h4>
@@ -67,7 +67,7 @@ class Nav extends Component {
                                     <button className="w3-black"><img src={localStorage.userImg} alt="Profile Pic" /></button>
                                     <div className="w3-dropdown-content">
                                         <GoogleLogout
-                                            clientId="533634014318-9106qq5hef7elbmh4pc4l746t8kmoglf.apps.googleusercontent.com"
+                                            clientId={process.env.REACT_APP_CLIENT_ID}
                                             buttonText="Logout"
                                             onLogoutSuccess={this.logout}
                                             onFailure={this.logout}
@@ -78,7 +78,7 @@ class Nav extends Component {
                             : 
                             <h4>
                                 <Link to={"/"}>
-                                <img src="../images/logo.gif" alt="New"/>
+                                <img src="http://www.canam.dance/wp-content/uploads/2018/06/8E5F4202-CB50-4F8C-BB96-D4CBADA6E916.gif" alt="New"/>
                                 NewTube
                                 </Link>
                             </h4>}

@@ -3,10 +3,22 @@
     width: 100%;
     height: 145px;
     padding:1%;
+    color: black;
+}
+
+.video-thumbnail{
+    display: flex;
+    justify-content: center;
+    width: 20%;
+}
+
+.video-thumbnail img{
+    height: 100%;
+    width: auto;
 }
 
 .title-description{
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
 }

@@ -2,9 +2,18 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding: 20px;
 }
 
 .videoPartial{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width:25%;
-    height: 50vh;
+    height: 55vh;
+}
+
+.videoPartial button{
+    width:50%;
 }

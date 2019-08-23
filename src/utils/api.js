@@ -77,8 +77,8 @@ export const getChannelById = function (channel_id) {
             method: "GET"
         })
         .then(responseFromApi => {
-    
-            return responseFromApi.data;
+            debugger
+            return responseFromApi.data.items[0];
         })
         .catch((err) => {
             console.log('err' + err)
