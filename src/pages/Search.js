@@ -34,6 +34,7 @@ export default class Search extends Component {
     }
 
     render() {
+        debugger
         return (
             <MainLayout>
                 <div className="ChannelResults">
@@ -44,10 +45,10 @@ export default class Search extends Component {
                                     <div className="searched-channel">
                                         <YTChannel {...this.props} channelId={channel.id} channel={channel} key={index} />
                                         {this.state.isSubscribed === true ?
-                                            <button className="btn grey" onClick={() => { this.unsubscribe(this.props.channel.id) }}>SUBSCRIBED</button>
+                                            <button className="btn grey" onClick={() => { this.unsubscribe(channel.id) }}>SUBSCRIBED</button>
                                             :
                                             (this.state.isSubscribed === false ?
-                                                <button className="btn red" onClick={() => { this.subscribe(this.props.channelId) }}>SUBSCRIBE</button>
+                                                <button className="btn red" onClick={() => {  }}>SUBSCRIBE</button>  //onclick this.subscribe(channel.snippet.resourceId.channelId)
                                                 : <></>)
                                         }
                                     </div>

@@ -42,7 +42,7 @@ class Nav extends Component {
         }
     }
 
-    logout = (response) => {
+    logout = () => {
         authLogout()
         this.setState({ user: false }, () => {
             this.props.history.push("/")

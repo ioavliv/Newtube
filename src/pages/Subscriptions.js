@@ -19,12 +19,8 @@ export default class Subscriptions extends Component {
                 this.setState({
                     channels: subscriptions
                 })
-                debugger
-                // this.subscribedTo(this.props.channelId)
             })
-            // .then((isSubscribed) => {
-
-            // })
+            // .then((isSubscribed) => {})
             .catch((err) => {
                 console.log(err);
             })
@@ -33,7 +29,6 @@ export default class Subscriptions extends Component {
     subscribedTo(channelId) {
         let match = true;
         this.state.channels.items.map((channel) => {
-            debugger
             if (channel.id === channelId) {
                 match = true
             }
@@ -52,8 +47,15 @@ export default class Subscriptions extends Component {
     }
 
     unsubscribe = (channelId) => {
-        removeSubscription(channelId);
-        // isSubscribed = false;
+        debugger
+        removeSubscription(channelId)
+        .then(()=>{
+            debugger
+            this.setState({
+                isSubscribed: false
+            })
+        })
+        
     }
 
     render() {
@@ -65,14 +67,15 @@ export default class Subscriptions extends Component {
                             {this.state.channels.items.map((channel, index) => {
                                 return (
                                     <div key={index} className="videoPartial">
-                                        <YTChannel {...this.props} channelId={channel.snippet.resourceId.channelId}
-                                            channel={channel}
-                                        />
+
+                                        <YTChannel {...this.props} channelId={channel.snippet.resourceId.channelId} channel={channel} />
+                                        {/* // this.subscribedTo(this.state.channels.items[].snippet.resourceId.channelId) */}
+
                                         {this.state.isSubscribed === true ?
-                                            <button className="btn grey" onClick={() => { this.unsubscribe(this.props.channel.id) }}>SUBSCRIBED</button>
+                                            <button className="btn grey" onClick={() => { this.unsubscribe(channel.id) }}>SUBSCRIBED</button>
                                             :
                                             (this.state.isSubscribed === false ?
-                                                <button className="btn red" onClick={() => { this.subscribe(this.props.channelId) }}>SUBSCRIBE</button>
+                                                <button className="btn red" onClick={() => { this.subscribe(channel.snippet.resourceId.channelId) }}>SUBSCRIBE</button>
                                                 : <></>)
                                         }
                                     </div>
